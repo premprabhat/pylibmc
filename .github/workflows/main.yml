@@ -66,23 +66,23 @@ jobs:
           path: dist/*.tar.gz      
 
   upload_pypi:
-     needs: [build_wheels, build_sdist]
-     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/download-artifact@v2
-         with:
-           name: artifact
-           path: dist
+    needs: [build_wheels, build_sdist]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: artifact
+          path: dist
 
-       - uses: actions/download-artifact@v2
-         with:
-           name: wheels
-           path: dist
+      - uses: actions/download-artifact@v2
+        with:
+          name: wheels
+          path: dist
 
-       - run: ls -l dist/
+      - run: ls -l dist/
 
-       - name: Publish sdist to PyPI
-         uses: pypa/gh-action-pypi-publish@master
-         with:
-           user: ${{ secrets.PYPI_USERNAME }}
-           password: ${{ secrets.PYPI_PASSWORD }}
+      - name: Publish sdist to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: ${{ secrets.PYPI_USERNAME }}
+          password: ${{ secrets.PYPI_PASSWORD }}
