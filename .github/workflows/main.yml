@@ -39,7 +39,7 @@ jobs:
 
       - name: Build wheels
         env:
-          CIBW_SKIP: '*-musllinux*'
+          CIBW_SKIP: "*-musllinux* pp*"
           CIBW_ARCHS: ${{matrix.arch}}
           CIBW_BEFORE_BUILD_LINUX: "yum install -y libmemcached-devel"
           CIBW_BEFORE_BUILD_MACOS: "brew install libmemcached"
